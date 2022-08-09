@@ -18,4 +18,9 @@ public class GreetingService implements IGrettingService{
         String message = String.format("Hello",(greetingDTO.toString().isEmpty()) ? "Hello world" : greetingDTO.toString());
         return greetingRepository.save(new GreetingModel(counter.incrementAndGet(),message));
     }
+
+    @Override
+    public GreetingModel getGreetingById(long id) {
+        return greetingRepository.findById(id).get();
+    }
 }

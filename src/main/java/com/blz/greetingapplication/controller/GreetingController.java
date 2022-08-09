@@ -5,9 +5,9 @@ import com.blz.greetingapplication.model.GreetingModel;
 import com.blz.greetingapplication.service.IGrettingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/greeting")
@@ -21,5 +21,14 @@ public class GreetingController {
         greetingDTO.setFirstName(firstName);
         System.out.println(greetingDTO);
         return grettingService.addGreeting(greetingDTO);
+    }
+
+//    @PostMapping("/addgreeting")
+//    public GreetingModel addgreeting(@RequestBody GreetingDTO greetingDTO){
+//        return grettingService.addGreeting(greetingDTO);
+//    }
+    @GetMapping("/path/{id}")
+    public Optional<GreetingModel> getMessageById(@PathVariable(value = "id") long id) {
+        return Optional.ofNullable(grettingService.getGreetingById(id));
     }
 }

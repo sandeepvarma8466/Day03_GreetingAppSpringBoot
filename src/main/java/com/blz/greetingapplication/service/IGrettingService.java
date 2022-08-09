@@ -5,4 +5,6 @@ import com.blz.greetingapplication.model.GreetingModel;
 
 public interface IGrettingService {
     GreetingModel addGreeting(GreetingDTO greetingDTO);
+
+    GreetingModel getGreetingById(long id);
 }
