@@ -29,4 +29,12 @@ public class GreetingService implements IGrettingService{
     public List<GreetingModel> getAll() {
         return greetingRepository.findAll();
     }
+
+    @Override
+    public GreetingModel editGreetingById(long id, String message) {
+        GreetingModel greetingModel = greetingRepository.findById(id).get();
+        greetingModel.setMessage(message);
+        greetingRepository.save(greetingModel);
+        return greetingModel;
+    }
 }

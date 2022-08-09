@@ -33,4 +33,9 @@ public class GreetingController {
     public List<GreetingModel> getAll() {
         return grettingService.getAll();
     }
+
+    @PutMapping("/edit/{id}")
+    public GreetingModel editGreetingById(@PathVariable long id, @RequestParam String message) {
+        return grettingService.editGreetingById(id, message);
+    }
 }
