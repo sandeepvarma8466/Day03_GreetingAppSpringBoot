@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -23,12 +24,13 @@ public class GreetingController {
         return grettingService.addGreeting(greetingDTO);
     }
 
-//    @PostMapping("/addgreeting")
-//    public GreetingModel addgreeting(@RequestBody GreetingDTO greetingDTO){
-//        return grettingService.addGreeting(greetingDTO);
-//    }
     @GetMapping("/path/{id}")
     public Optional<GreetingModel> getMessageById(@PathVariable(value = "id") long id) {
         return Optional.ofNullable(grettingService.getGreetingById(id));
+    }
+
+    @GetMapping("/all")
+    public List<GreetingModel> getAll() {
+        return grettingService.getAll();
     }
 }
